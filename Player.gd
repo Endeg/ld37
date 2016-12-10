@@ -6,6 +6,10 @@ var sprite
 
 var direction = "Down"
 
+var counter = 0
+
+var examinedObject = null
+
 func _ready():
 	set_fixed_process(true)
 	sprite = get_node("Sprite")
@@ -40,3 +44,18 @@ func _fixed_process(delta):
 
 	move(vel_x)
 	move(vel_y)
+
+	if is_colliding():
+		print("Collider: " + var2str(get_collider()) + " " + var2str(counter))
+		counter = counter + 1
+
+func set_examined_object(obj):
+	examinedObject = obj
+	var examinedObjectLabel = get_node("/root/Root/GUI/ExaminedObjectLabel")
+	assert examinedObjectLabel != null
+	if examinedObject != null:
+		examinedObjectLabel.set_text(obj.get_name())
+	else:
+		examinedObjectLabel.set_text("")
+
+
