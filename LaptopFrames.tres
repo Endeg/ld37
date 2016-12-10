@@ -1,0 +1,10 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=1]
+
+[ext_resource path="res://images/laptop-turned-off.png" type="Texture" id=1]
+[ext_resource path="res://images/laptop-turned-on-1.png" type="Texture" id=2]
+[ext_resource path="res://images/laptop-turned-off-2.png" type="Texture" id=3]
+
+[resource]
+
+animations = [ { "frames":[ ExtResource( 1 ) ], "loop":true, "name":"TurnedOff", "speed":5.0 }, { "frames":[ ExtResource( 2 ), ExtResource( 3 ) ], "loop":true, "name":"TurnedOn", "speed":0.5 } ]
+
