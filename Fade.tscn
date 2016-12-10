@@ -6,7 +6,7 @@
 
 [node name="Fade" type="CanvasLayer"]
 
-layer = 1
+layer = 10
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -14,7 +14,6 @@ script/script = ExtResource( 1 )
 
 [node name="BlackScreen" type="Sprite" parent="."]
 
-visibility/opacity = 0.0
 transform/pos = Vector2( 160.303, 118.821 )
 transform/scale = Vector2( 166.617, 127.877 )
 texture = ExtResource( 2 )
