@@ -33,7 +33,7 @@ func _fixed_process(delta):
 		moving = true
 		direction = "Down"
 
-	if moving and sprite.get_animation().begins_with("Stay"):
+	if moving and sprite.get_animation() != "Move" + direction:
 		sprite.play("Move" + direction)
 	elif not moving and sprite.get_animation().begins_with("Move"):
 		sprite.set_animation("Stay" + direction)
