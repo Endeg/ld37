@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://Fade.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tiles.tres" type="TileSet" id=3]
 [ext_resource path="res://images/black.png" type="Texture" id=4]
-[ext_resource path="res://Player.gd" type="Script" id=5]
-[ext_resource path="res://PlayerFrames.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://images/desk.png" type="Texture" id=5]
+[ext_resource path="res://Player.gd" type="Script" id=6]
+[ext_resource path="res://PlayerFrames.tres" type="SpriteFrames" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -31,6 +32,11 @@ extents = Vector2( 80, 16 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 32 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.4511, 5.64477 )
 
 [sub_resource type="CircleShape2D" id=6]
 
@@ -124,6 +130,8 @@ _update_shape_index = 4
 
 [node name="Borders" type="Node" parent="TileMap"]
 
+editor/display_folded = true
+
 [node name="Border1" type="Sprite" parent="TileMap/Borders"]
 
 transform/pos = Vector2( 8, 88 )
@@ -159,6 +167,33 @@ transform/scale = Vector2( 49, 9 )
 z/z = 512
 texture = ExtResource( 4 )
 
+[node name="Furniture" type="Node" parent="TileMap"]
+
+[node name="Desk" type="StaticBody2D" parent="TileMap/Furniture"]
+
+transform/pos = Vector2( 64, 32 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.473343, 5.36451 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Furniture/Desk"]
+
+transform/pos = Vector2( -0.473343, 5.36451 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sprite" type="Sprite" parent="TileMap/Furniture/Desk"]
+
+texture = ExtResource( 5 )
+
 [node name="Player" type="KinematicBody2D" parent="."]
 
 transform/pos = Vector2( 256, 80 )
@@ -169,11 +204,11 @@ shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Player"]
 
-frames = ExtResource( 6 )
+frames = ExtResource( 7 )
 animation = "StayDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
