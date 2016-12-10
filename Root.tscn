@@ -47,7 +47,7 @@ radius = 4.5
 [sub_resource type="RayShape2D" id=8]
 
 custom_solver_bias = 0.0
-length = 15.2298
+length = 22.3116
 
 [node name="Root" type="Node"]
 
@@ -202,7 +202,7 @@ texture = ExtResource( 5 )
 
 [node name="Laptop" parent="TileMap/Furniture/Desk" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 36.588, 8.88372 )
+transform/pos = Vector2( -6.31122, -6.60767 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 
@@ -212,7 +212,7 @@ shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 4 )
 shapes/0/trigger = false
 shapes/1/shape = SubResource( 8 )
-shapes/1/transform = Matrix32( -1, 8.74228e-08, -8.74228e-08, -1, 0, 0 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0.174835, 3.84615 )
 shapes/1/trigger = true
 collision/layers = 1
 collision/mask = 1
@@ -233,7 +233,8 @@ _update_shape_index = 0
 
 [node name="Ray" type="CollisionShape2D" parent="Player"]
 
-transform/rot = 180.0
+transform/pos = Vector2( 0.174835, 3.84615 )
+transform/scale = Vector2( 1, 1 )
 shape = SubResource( 8 )
 trigger = true
 _update_shape_index = 1
