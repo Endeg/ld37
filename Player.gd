@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 const PLAYER_VEL = 0.75
 
-var sprite
-
+var sprite = null
 var ray = null
+var messagePopup = null
 
 var direction = "Down"
 
@@ -12,12 +12,18 @@ var counter = 0
 
 var examinedObject = null
 
+var q = preload("Quest.gd").new()
+
 func _ready():
 	set_fixed_process(true)
 	sprite = get_node("Sprite")
 	assert sprite != null
 	ray = get_node("Ray")
 	assert ray != null
+	messagePopup = get_node("/root/Root/GUI/Message")
+	assert messagePopup != null
+	
+	messagePopup.showMessages(["Well.", "It's time to turn on computer and check the Internet!"])
 
 func _fixed_process(delta):
 	var vel_x = Vector2()
