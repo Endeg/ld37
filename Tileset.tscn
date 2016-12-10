@@ -4,10 +4,10 @@
 [ext_resource path="res://images/tile-wood.png" type="Texture" id=2]
 [ext_resource path="res://images/tile-wall-paper.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 8 )
+points = Vector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="Tileset" type="Node"]
 
@@ -32,7 +32,7 @@ centered = false
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 8, 8 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -41,11 +41,11 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wallpaper/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wallpaper/StaticBody2D"]
 
-transform/pos = Vector2( 8, 8 )
-shape = SubResource( 1 )
+build_mode = 0
+polygon = Vector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+shape_range = Vector2( 0, 0 )
 trigger = false
-_update_shape_index = 0
 
 
