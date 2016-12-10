@@ -7,15 +7,17 @@ func _ready():
 	print("Player ready!")
 
 func _fixed_process(delta):
-	var vel = Vector2()
-	if Input.is_action_pressed("player-up"):
-		vel.y = -PLAYER_VEL
-	elif Input.is_action_pressed("player-down"):
-		vel.y = PLAYER_VEL
-	
+	var vel_x = Vector2()
+	var vel_y = Vector2()
 	if Input.is_action_pressed("player-left"):
-		vel.x = -PLAYER_VEL
+		vel_x.x = -PLAYER_VEL
 	elif Input.is_action_pressed("player-right"):
-		vel.x = PLAYER_VEL
+		vel_x.x = PLAYER_VEL
 	
-	move(vel)
+	if Input.is_action_pressed("player-up"):
+		vel_y.y = -PLAYER_VEL
+	elif Input.is_action_pressed("player-down"):
+		vel_y.y = PLAYER_VEL
+	
+	move(vel_x)
+	move(vel_y)
