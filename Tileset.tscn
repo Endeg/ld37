@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://images/tile-carpet.png" type="Texture" id=1]
+[ext_resource path="res://images/tile-wood.png" type="Texture" id=2]
+
+[node name="Tileset" type="Node"]
+
+[node name="Carpet" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Wood" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+
