@@ -4,7 +4,7 @@
 [ext_resource path="res://Fade.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tiles.tres" type="TileSet" id=3]
 [ext_resource path="res://Player.gd" type="Script" id=4]
-[ext_resource path="res://images/the-guy-stay-down.png" type="Texture" id=5]
+[ext_resource path="res://PlayerFrames.tres" type="SpriteFrames" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -132,9 +132,10 @@ collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
+[node name="Sprite" type="AnimatedSprite" parent="Player"]
 
-texture = ExtResource( 5 )
+frames = ExtResource( 5 )
+animation = "StayDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 

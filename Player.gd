@@ -4,6 +4,7 @@ const PLAYER_VEL = 2.0
 
 func _ready():
 	set_fixed_process(true)
+	get_node("Sprite").play("MoveDown")
 	print("Player ready!")
 
 func _fixed_process(delta):
@@ -18,6 +19,6 @@ func _fixed_process(delta):
 		vel_y.y = -PLAYER_VEL
 	elif Input.is_action_pressed("player-down"):
 		vel_y.y = PLAYER_VEL
-	
+
 	move(vel_x)
 	move(vel_y)
