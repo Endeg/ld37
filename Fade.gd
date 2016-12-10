@@ -12,5 +12,6 @@ func fadeOut():
 	anim.play_backwards("Fade")
 	
 func switchToNextScene():
-	print("Switching to scene '" + nextScene + "'")
-	get_tree().change_scene("res://" + nextScene)
+	if nextScene != null:
+		print("Switching to scene '" + nextScene + "'")
+		get_tree().change_scene("res://" + nextScene)
