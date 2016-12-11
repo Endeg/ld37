@@ -54,34 +54,34 @@ transform/pos = Vector2( 205.337, 0 )
 
 [node name="Enemy1" parent="Enemies" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 165.35, 97.8053 )
 z/z = 80
 
 [node name="Sprite" type="Sprite" parent="Enemies/Enemy1"]
 
+visibility/visible = false
 transform/pos = Vector2( -3.78253, 28.6391 )
 texture = ExtResource( 3 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 152.382, 51.3343 )
 z/z = 60
 
 [node name="Sprite" type="Sprite" parent="Enemies/Enemy2"]
 
+visibility/visible = false
 transform/pos = Vector2( -5.94398, 26.4777 )
 texture = ExtResource( 3 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 252.349, 90.2403 )
 z/z = 60
 
 [node name="Sprite" type="Sprite" parent="Enemies/Enemy3"]
 
+visibility/visible = false
 transform/pos = Vector2( -3.24222, 27.0181 )
 texture = ExtResource( 3 )
 
@@ -95,6 +95,7 @@ z/z = 100
 
 [node name="Sprite" type="Sprite" parent="Hero/BattleEntity"]
 
+visibility/visible = false
 transform/pos = Vector2( 5.98738, 79.6321 )
 texture = ExtResource( 4 )
 

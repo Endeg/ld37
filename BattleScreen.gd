@@ -4,6 +4,11 @@ var battleInProgress = false
 
 func _ready():
 	set_process_input(true)
+	
+	get_node("Hero/BattleEntity").setEntityName("Guy")
+	get_node("Enemies/Enemy1").setEntityName("Enemy")
+	get_node("Enemies/Enemy2").setEntityName("Enemy")
+	get_node("Enemies/Enemy3").setEntityName("Enemy")
 
 func engage():
 	battleInProgress = true

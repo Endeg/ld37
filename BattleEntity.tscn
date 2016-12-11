@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://BattleEntity.gd" type="Script" id=1]
 [ext_resource path="res://BattleEntityAnimaionAttack.tres" type="Animation" id=2]
 [ext_resource path="res://BattleEntityAnimationDamage.tres" type="Animation" id=3]
 [ext_resource path="res://BattleEntityAnimationReset.tres" type="Animation" id=4]
+[ext_resource path="res://images/battle-hero.png" type="Texture" id=5]
+[ext_resource path="res://images/enemy-placeholder.png" type="Texture" id=6]
 
 [node name="BattleEntity" type="Node2D"]
 
@@ -36,5 +38,17 @@ text = "Test"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Guy" type="Sprite" parent="Visual"]
+
+transform/pos = Vector2( 5.98737, 81.4283 )
+texture = ExtResource( 5 )
+
+[node name="Enemy" type="Sprite" parent="Visual"]
+
+transform/pos = Vector2( -3.59242, 31.7331 )
+texture = ExtResource( 6 )
 
 

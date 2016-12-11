@@ -14,6 +14,9 @@ func setEntityName(name = "noname"):
 	assert lbl != null
 	lbl.set_text(name)
 
+	for entity in get_node("Visual").get_children():
+		entity.set_hidden(entity.get_name() != name)
+
 func displayDamage():
 	animation.play("Damage")
 
