@@ -9,7 +9,7 @@ var enemy3 = null
 
 func _ready():
 	set_process_input(true)
-	
+
 	hero = get_node("Hero/BattleEntity")
 	assert hero != null
 	hero.setEntityName("Guy")
@@ -26,18 +26,20 @@ func _ready():
 	set_fixed_process(true)
 
 func engage():
-	battleInProgress = true
-	hero.reset()
-	enemy1.reset()
-	enemy2.reset()
-	enemy3.reset()
-	get_tree().set_pause(true)
-	get_node("AnimationPlayer").play("Engage")
+	if not battleInProgress:
+		get_tree().set_pause(true)
+		battleInProgress = true
+		hero.reset()
+		enemy1.reset()
+		enemy2.reset()
+		enemy3.reset()
+		get_node("AnimationPlayer").play("Engage")
 	
 func finish():
-	battleInProgress = false
-	get_tree().set_pause(false)
-	get_node("AnimationPlayer").play_backwards("Engage")
+	if battleInProgress:
+		get_tree().set_pause(false)
+		battleInProgress = false
+		get_node("AnimationPlayer").play_backwards("Engage")
 
 func enemyThink(enemy):
 	if battleInProgress and enemy.isReadyForAction():
@@ -47,6 +49,15 @@ func _fixed_process(delta):
 	enemyThink(enemy1)
 	enemyThink(enemy2)
 	enemyThink(enemy3)
+	
+	if battleInProgress and not hero.isAlive():
+		finish()
+		var message = get_node("../GUI/Message")
+		assert message != null
+		message.showMessages(["The rodents once again were victorius.", "Such a messy room!", "You lost one motivation point."])
+		get_node("/root/Quest").loseMotivation(1)
+		#Lose one motivation point
+		
 
 func _input(event):
 	if event.type == InputEvent.KEY:

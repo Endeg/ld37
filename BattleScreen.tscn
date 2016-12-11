@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://BattleScreen.gd" type="Script" id=1]
 [ext_resource path="res://BattleEntity.tscn" type="PackedScene" id=2]
-[ext_resource path="res://images/enemy-placeholder.png" type="Texture" id=3]
-[ext_resource path="res://images/battle-hero.png" type="Texture" id=4]
-[ext_resource path="res://images/battle-instructions.png" type="Texture" id=5]
+[ext_resource path="res://images/battle-instructions.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -66,12 +64,6 @@ transform/pos = Vector2( 165.35, 97.8053 )
 
 z/z = 80
 
-[node name="Sprite" type="Sprite" parent="Enemies/Enemy1/BattleEntity"]
-
-visibility/visible = false
-transform/pos = Vector2( -3.78253, 28.6391 )
-texture = ExtResource( 3 )
-
 [node name="Enemy2" type="Node2D" parent="Enemies"]
 
 transform/pos = Vector2( 152.382, 51.3343 )
@@ -80,12 +72,7 @@ transform/pos = Vector2( 152.382, 51.3343 )
 
 z/z = 60
 speed = 30
-
-[node name="Sprite" type="Sprite" parent="Enemies/Enemy2/BattleEntity"]
-
-visibility/visible = false
-transform/pos = Vector2( -5.94398, 26.4777 )
-texture = ExtResource( 3 )
+baseDamage = 50
 
 [node name="Enemy3" type="Node2D" parent="Enemies"]
 
@@ -95,27 +82,18 @@ transform/pos = Vector2( 252.349, 90.2403 )
 
 z/z = 60
 speed = 2
-
-[node name="Sprite" type="Sprite" parent="Enemies/Enemy3/BattleEntity"]
-
-visibility/visible = false
-transform/pos = Vector2( -3.24222, 27.0181 )
-texture = ExtResource( 3 )
+baseDamage = 80
 
 [node name="Hero" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -85, 76.9412 )
 
 [node name="BattleEntity" parent="Hero" instance=ExtResource( 2 )]
 
 z/z = 100
 speed = 25
-
-[node name="Sprite" type="Sprite" parent="Hero/BattleEntity"]
-
-visibility/visible = false
-transform/pos = Vector2( 5.98738, 79.6321 )
-texture = ExtResource( 4 )
+baseDamage = 25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -133,6 +111,6 @@ autoplay = ""
 
 transform/pos = Vector2( 192.244, 269.19 )
 z/z = 150
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 
 

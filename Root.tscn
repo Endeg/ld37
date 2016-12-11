@@ -7,8 +7,8 @@
 [ext_resource path="res://Laptop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player.gd" type="Script" id=6]
 [ext_resource path="res://PlayerFrames.tres" type="SpriteFrames" id=7]
-[ext_resource path="res://Message.tscn" type="PackedScene" id=8]
-[ext_resource path="res://BattleScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://BattleScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Message.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Fade.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -240,6 +240,8 @@ shape = SubResource( 8 )
 trigger = true
 _update_shape_index = 1
 
+[node name="BattleScreen" parent="." instance=ExtResource( 8 )]
+
 [node name="GUI" type="CanvasLayer" parent="."]
 
 layer = 20
@@ -289,11 +291,23 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Message" parent="GUI" instance=ExtResource( 8 )]
+[node name="Message" parent="GUI" instance=ExtResource( 9 )]
 
 visibility/visible = false
 
-[node name="BattleScreen" parent="." instance=ExtResource( 9 )]
+[node name="Motivation" type="Label" parent="GUI"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 4.0
+margin/top = 223.0
+margin/right = 44.0
+margin/bottom = 237.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Fade" parent="." instance=ExtResource( 10 )]
 

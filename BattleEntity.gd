@@ -4,6 +4,7 @@ var DamageGibClass = preload("res://DamageGib.tscn")
 
 export var speed = 10
 export var health = 100
+export var baseDamage = 20
 
 var currentHealth = 0
 
@@ -45,17 +46,18 @@ func setEntityName(name = "noname"):
 	for entity in get_node("Visual").get_children():
 		entity.set_hidden(entity.get_name() != name)
 
-func attack(entity, amount = 0):
+func attack(entity):
 	if isReadyForAction():
 		reset()
 		displayAttack()
+		var amount = int(baseDamage * rand_range(1.0, 2.0))
 		entity.displayDamage(amount)
 		entity.applyDamage(amount)
 
 func applyDamage(amount):
-	health = health - amount
-	if health <= 0:
-		health = 0
+	currentHealth = currentHealth - amount
+	if currentHealth <= 0:
+		currentHealth = 0
 		hide()
 
 func displayDamage(amount):

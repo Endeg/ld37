@@ -12,7 +12,7 @@ var counter = 0
 
 var examinedObject = null
 
-var q = preload("Quest.gd").new()
+var quest = null
 
 func _ready():
 	set_fixed_process(true)
@@ -22,6 +22,10 @@ func _ready():
 	assert ray != null
 	messagePopup = get_node("/root/Root/GUI/Message")
 	assert messagePopup != null
+	quest = get_node("/root/Quest")
+	assert quest != null
+	
+	quest.updateMotivation()
 	
 	messagePopup.showMessages(["Well.", "It's time to turn on computer and check the Internet!"])
 
