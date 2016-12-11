@@ -71,7 +71,7 @@ func _fixed_process(delta):
 
 func set_examined_object(obj):
 	examinedObject = obj
-	var examinedObjectLabel = get_node("/root/Root/GUI/ExaminedObjectLabel")
+	var examinedObjectLabel = get_node("/root/Root/FadeableGUI/ExaminedObjectLabel")
 	assert examinedObjectLabel != null
 	if examinedObject != null:
 		examinedObjectLabel.set_text(obj.get_name())
