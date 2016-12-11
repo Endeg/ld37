@@ -13,6 +13,12 @@ var count = 0
 
 var progress = null
 
+func initEntity(theHealth = 0, theSpeed = 0, theDamage = 0):
+	speed = theSpeed
+	health = theHealth
+	baseDamage = theDamage
+	reset()
+
 func _ready():
 	animation = get_node("AnimationPlayer")
 	assert animation != null

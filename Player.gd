@@ -66,6 +66,7 @@ func _fixed_process(delta):
 		
 	var dice = quest.currentDanger * rand_range(0.0, 1.0)
 	if moving and dice > 0.5:
+		battleScreen.initSingleEnemyBattle()
 		battleScreen.engage()
 
 	if moving and sprite.get_animation() != "Move" + direction:
