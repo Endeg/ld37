@@ -10,6 +10,7 @@
 [node name="BattleEntity" type="Node2D"]
 
 script/script = ExtResource( 1 )
+speed = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -31,9 +32,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = -19.0
-margin/top = -18.0
+margin/top = -32.0
 margin/right = 21.0
-margin/bottom = -4.0
+margin/bottom = -18.0
 text = "Test"
 percent_visible = 1.0
 lines_skipped = 0
@@ -41,14 +42,35 @@ max_lines_visible = -1
 
 [node name="Visual" type="Node2D" parent="."]
 
+transform/pos = Vector2( 0, -14 )
+
 [node name="Guy" type="Sprite" parent="Visual"]
 
-transform/pos = Vector2( 5.98737, 81.4283 )
+transform/pos = Vector2( 5.98737, 97.4283 )
 texture = ExtResource( 5 )
 
 [node name="Enemy" type="Sprite" parent="Visual"]
 
-transform/pos = Vector2( -3.59242, 31.7331 )
+transform/pos = Vector2( -3.59242, 45.7331 )
 texture = ExtResource( 6 )
+
+[node name="ActionProgress" type="ProgressBar" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -26.0
+margin/top = -18.0
+margin/right = 20.0
+margin/bottom = -2.0
+range/min = 0.0
+range/max = 100.0
+range/step = 0.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
 
 

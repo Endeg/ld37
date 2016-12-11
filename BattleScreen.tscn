@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://BattleScreen.gd" type="Script" id=1]
 [ext_resource path="res://BattleEntity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://images/enemy-placeholder.png" type="Texture" id=3]
 [ext_resource path="res://images/battle-hero.png" type="Texture" id=4]
+[ext_resource path="res://images/battle-instructions.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -21,6 +22,11 @@ tracks/1/path = NodePath("Enemies:transform/pos")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = { "times":FloatArray( 0, 3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 205.337, 0 ), Vector2( 0, 0 ) ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 192.244, 269.19 ), Vector2( 192.244, 190.22 ) ] }
 
 [sub_resource type="Animation" id=2]
 
@@ -73,6 +79,7 @@ transform/pos = Vector2( 152.382, 51.3343 )
 [node name="BattleEntity" parent="Enemies/Enemy2" instance=ExtResource( 2 )]
 
 z/z = 60
+speed = 30
 
 [node name="Sprite" type="Sprite" parent="Enemies/Enemy2/BattleEntity"]
 
@@ -87,6 +94,7 @@ transform/pos = Vector2( 252.349, 90.2403 )
 [node name="BattleEntity" parent="Enemies/Enemy3" instance=ExtResource( 2 )]
 
 z/z = 60
+speed = 2
 
 [node name="Sprite" type="Sprite" parent="Enemies/Enemy3/BattleEntity"]
 
@@ -101,6 +109,7 @@ transform/pos = Vector2( -85, 76.9412 )
 [node name="BattleEntity" parent="Hero" instance=ExtResource( 2 )]
 
 z/z = 100
+speed = 25
 
 [node name="Sprite" type="Sprite" parent="Hero/BattleEntity"]
 
@@ -119,5 +128,11 @@ playback/active = true
 playback/speed = 4.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 192.244, 269.19 )
+z/z = 150
+texture = ExtResource( 5 )
 
 

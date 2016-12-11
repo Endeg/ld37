@@ -27,12 +27,10 @@ func _input(event):
 		elif event.is_action_released("debug-battle-finish"):
 			finish()
 		elif event.is_action_released("debug-battle-attack"):
-			get_node("Hero/BattleEntity").displayAttack()
-			get_node("Enemies/Enemy1/BattleEntity").displayDamage()
-			get_node("Enemies/Enemy2/BattleEntity").displayDamage()
-			get_node("Enemies/Enemy3/BattleEntity").displayDamage()
+			get_node("Hero/BattleEntity").attack(get_node("Enemies/Enemy1/BattleEntity"))
+			get_node("Hero/BattleEntity").attack(get_node("Enemies/Enemy2/BattleEntity"))
+			get_node("Hero/BattleEntity").attack(get_node("Enemies/Enemy3/BattleEntity"))
 		elif event.is_action_released("debug-battle-damage"):
-			get_node("Hero/BattleEntity").displayDamage()
-			get_node("Enemies/Enemy1/BattleEntity").displayAttack()
-			get_node("Enemies/Enemy2/BattleEntity").displayAttack()
-			get_node("Enemies/Enemy3/BattleEntity").displayAttack()
+			get_node("Enemies/Enemy1/BattleEntity").attack(get_node("Hero/BattleEntity"))
+			get_node("Enemies/Enemy2/BattleEntity").attack(get_node("Hero/BattleEntity"))
+			get_node("Enemies/Enemy3/BattleEntity").attack(get_node("Hero/BattleEntity"))
