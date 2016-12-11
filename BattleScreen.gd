@@ -30,7 +30,7 @@ func engage():
 	hero.reset()
 	enemy1.reset()
 	enemy2.reset()
-	enemy3.reset()	
+	enemy3.reset()
 	get_tree().set_pause(true)
 	get_node("AnimationPlayer").play("Engage")
 	

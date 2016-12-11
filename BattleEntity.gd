@@ -3,6 +3,9 @@ extends Node2D
 var DamageGibClass = preload("res://DamageGib.tscn")
 
 export var speed = 10
+export var health = 100
+
+var currentHealth = 0
 
 var animation = null
 var count = 0
@@ -20,13 +23,19 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	progress.set_value(progress.get_value() + delta * speed)
+	if isAlive():
+		progress.set_value(progress.get_value() + delta * speed)
 
 func reset():
+	currentHealth = health
 	progress.set_value(progress.get_min())
+	show()
+
+func isAlive():
+	return currentHealth > 0
 
 func isReadyForAction():
-	return progress.get_value() >= progress.get_max()
+	return isAlive() and progress.get_value() >= progress.get_max()
 
 func setEntityName(name = "noname"):
 	var lbl = get_node("Label")
@@ -36,17 +45,23 @@ func setEntityName(name = "noname"):
 	for entity in get_node("Visual").get_children():
 		entity.set_hidden(entity.get_name() != name)
 
-func attack(entity):
+func attack(entity, amount = 0):
 	if isReadyForAction():
 		reset()
 		displayAttack()
-		entity.displayDamage() #amount
-		#entity.applyDamage(amount)
+		entity.displayDamage(amount)
+		entity.applyDamage(amount)
 
-func displayDamage():
+func applyDamage(amount):
+	health = health - amount
+	if health <= 0:
+		health = 0
+		hide()
+
+func displayDamage(amount):
 	animation.play("Damage")
 	var dmg = DamageGibClass.instance()
-	dmg.setDamage(20)
+	dmg.setDamage(amount)
 	#s.set_pos(get_pos() + vel)
 	#s.set_rot(get_rot())
 	get_parent().add_child(dmg)
