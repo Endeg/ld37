@@ -4,12 +4,14 @@ var motivation = 2
 var gameOver = false
 
 var currentBiome = null
+var currentDanger = 0.0
 
 func _init():
 	print("Quest object is ready.")
 
 func newGame():
 	currentBiome = null
+	currentDanger = 0.0
 	gameOver = false
 	motivation = 2
 
@@ -22,8 +24,9 @@ func loseMotivation(amount):
 	motivation = motivation - 1
 	updateMotivation()
 
-func setBiome(name):
+func setBiome(name, theDanger = 0.0):
 	currentBiome = name
+	currentDanger = theDanger
 	var biomeLabel = get_node("/root/Root/FadeableGUI/Biome")
 	assert biomeLabel != null
 	if name != null:

@@ -5,6 +5,7 @@ const PLAYER_VEL = 0.75
 var sprite = null
 var ray = null
 var messagePopup = null
+var battleScreen = null
 
 var direction = "Down"
 
@@ -24,6 +25,8 @@ func _ready():
 	assert messagePopup != null
 	quest = get_node("/root/Quest")
 	assert quest != null
+	battleScreen = get_node("/root/Root/BattleScreen")
+	assert battleScreen != null
 	
 	quest.updateMotivation()
 	
@@ -60,6 +63,10 @@ func _fixed_process(delta):
 		moving = true
 		ray.set_rot(deg2rad(0.0))
 		direction = "Down"
+		
+	var dice = quest.currentDanger * rand_range(0.0, 1.0)
+	if moving and dice > 0.5:
+		battleScreen.engage()
 
 	if moving and sprite.get_animation() != "Move" + direction:
 		sprite.play("Move" + direction)
