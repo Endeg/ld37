@@ -1,5 +1,23 @@
 extends CanvasLayer
 
-func _ready():
-	get_node("Hero/BattleEntity").setEntityName("Guy")
+var battleInProgress = false
 
+func _ready():
+	set_process_input(true)
+
+func engage():
+	battleInProgress = true
+	get_tree().set_pause(true)
+	get_node("AnimationPlayer").play("Engage")
+	
+func finish():
+	battleInProgress = false
+	get_tree().set_pause(false)
+	get_node("AnimationPlayer").play_backwards("Engage")
+
+func _input(event):
+	if event.type == InputEvent.KEY:
+		if event.is_action_released("debug-battle-engage"):
+			engage()
+		elif event.is_action_released("debug-battle-finish"):
+			finish()

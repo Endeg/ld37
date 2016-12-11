@@ -242,7 +242,6 @@ _update_shape_index = 1
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 20
 offset = Vector2( 0, 0 )
 rotation = 0.0
