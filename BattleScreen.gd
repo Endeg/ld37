@@ -54,7 +54,7 @@ func _input(event):
 			engage()
 		elif event.is_action_released("debug-battle-finish"):
 			finish()
-		elif event.is_action_released("debug-battle-attack"):
+		elif event.is_action_released("player-up"):
 			get_node("Hero/BattleEntity").attack(get_node("Enemies/Enemy1/BattleEntity"))
 			get_node("Hero/BattleEntity").attack(get_node("Enemies/Enemy2/BattleEntity"))
 			get_node("Hero/BattleEntity").attack(get_node("Enemies/Enemy3/BattleEntity"))

@@ -1,5 +1,7 @@
 extends Node2D
 
+var DamageGibClass = preload("res://DamageGib.tscn")
+
 export var speed = 10
 
 var animation = null
@@ -43,6 +45,11 @@ func attack(entity):
 
 func displayDamage():
 	animation.play("Damage")
+	var dmg = DamageGibClass.instance()
+	dmg.setDamage(20)
+	#s.set_pos(get_pos() + vel)
+	#s.set_rot(get_rot())
+	get_parent().add_child(dmg)
 
 func displayAttack():
 	animation.play("Attack")
