@@ -17,8 +17,8 @@ func nextMessage():
 		var msg = messages[0]
 		assert msg != null
 		messages.pop_front()
-		get_node("RichTextLabel").set_bbcode(msg)
-		popup()
+		get_node("Panel/RichTextLabel").set_bbcode(msg)
+		popup_centered_ratio()
 	else:
 		get_tree().set_pause(false)
 	
