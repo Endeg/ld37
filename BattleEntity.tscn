@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://BattleEntity.gd" type="Script" id=1]
-[ext_resource path="res://BattleEntityAnimationDamage.tres" type="Animation" id=2]
-[ext_resource path="res://BattleEntityAnimationReset.tres" type="Animation" id=3]
+[ext_resource path="res://BattleEntityAnimaionAttack.tres" type="Animation" id=2]
+[ext_resource path="res://BattleEntityAnimationDamage.tres" type="Animation" id=3]
+[ext_resource path="res://BattleEntityAnimationReset.tres" type="Animation" id=4]
 
 [node name="BattleEntity" type="Node2D"]
 
@@ -13,8 +14,9 @@ script/script = ExtResource( 1 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/Damage = ExtResource( 2 )
-anims/Reset = ExtResource( 3 )
+anims/Attack = ExtResource( 2 )
+anims/Damage = ExtResource( 3 )
+anims/Reset = ExtResource( 4 )
 playback/active = true
 playback/speed = 10.0
 blend_times = [  ]
@@ -26,10 +28,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 14.0
+margin/left = -19.0
+margin/top = -18.0
+margin/right = 21.0
+margin/bottom = -4.0
 text = "Test"
 percent_visible = 1.0
 lines_skipped = 0
