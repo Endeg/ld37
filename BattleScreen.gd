@@ -34,8 +34,7 @@ func engage():
 		get_tree().set_pause(true)
 		battleInProgress = true
 		hero.reset()
-		
-		resetAll()
+		#resetAll()
 		get_node("AnimationPlayer").play("Engage")
 	
 func resetAll():

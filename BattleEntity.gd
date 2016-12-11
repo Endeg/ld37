@@ -36,7 +36,10 @@ func _fixed_process(delta):
 func reset():
 	currentHealth = health
 	progress.set_value(progress.get_min())
-	show()
+	if isAlive():
+		show()
+	else:
+		hide()
 
 func isAlive():
 	return currentHealth > 0
