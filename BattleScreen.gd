@@ -6,9 +6,9 @@ func _ready():
 	set_process_input(true)
 	
 	get_node("Hero/BattleEntity").setEntityName("Guy")
-	get_node("Enemies/Enemy1").setEntityName("Enemy")
-	get_node("Enemies/Enemy2").setEntityName("Enemy")
-	get_node("Enemies/Enemy3").setEntityName("Enemy")
+	get_node("Enemies/Enemy1/BattleEntity").setEntityName("Enemy")
+	get_node("Enemies/Enemy2/BattleEntity").setEntityName("Enemy")
+	get_node("Enemies/Enemy3/BattleEntity").setEntityName("Enemy")
 
 func engage():
 	battleInProgress = true
@@ -26,3 +26,13 @@ func _input(event):
 			engage()
 		elif event.is_action_released("debug-battle-finish"):
 			finish()
+		elif event.is_action_released("debug-battle-attack"):
+			get_node("Hero/BattleEntity").displayAttack()
+			get_node("Enemies/Enemy1/BattleEntity").displayDamage()
+			get_node("Enemies/Enemy2/BattleEntity").displayDamage()
+			get_node("Enemies/Enemy3/BattleEntity").displayDamage()
+		elif event.is_action_released("debug-battle-damage"):
+			get_node("Hero/BattleEntity").displayDamage()
+			get_node("Enemies/Enemy1/BattleEntity").displayAttack()
+			get_node("Enemies/Enemy2/BattleEntity").displayAttack()
+			get_node("Enemies/Enemy3/BattleEntity").displayAttack()
