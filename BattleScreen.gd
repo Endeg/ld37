@@ -72,7 +72,7 @@ func _fixed_process(delta):
 
 func initSingleEnemyBattle():
 	resetAll()
-	enemies[0].initEntity(20, 2, 2)
+	enemies[0].initEntity(50, 10, 5)
 
 func _input(event):
 	if event.type == InputEvent.KEY:
