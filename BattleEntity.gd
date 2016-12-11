@@ -13,12 +13,15 @@ func _ready():
 	
 	progress = get_node("ActionProgress")
 	assert progress != null
-	progress.set_min(progress.get_min())
+	reset()
 	
 	set_fixed_process(true)
 
 func _fixed_process(delta):
 	progress.set_value(progress.get_value() + delta * speed)
+
+func reset():
+	progress.set_value(progress.get_min())
 
 func isReadyForAction():
 	return progress.get_value() >= progress.get_max()
@@ -33,7 +36,7 @@ func setEntityName(name = "noname"):
 
 func attack(entity):
 	if isReadyForAction():
-		progress.set_value(progress.get_min() + 10)
+		reset()
 		displayAttack()
 		entity.displayDamage() #amount
 		#entity.applyDamage(amount)
