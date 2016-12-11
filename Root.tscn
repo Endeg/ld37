@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://PlayerFrames.tres" type="SpriteFrames" id=4]
-[ext_resource path="res://BattleScreen.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Message.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Fade.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Biome.gd" type="Script" id=5]
+[ext_resource path="res://BattleScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Message.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Fade.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=7]
 
@@ -18,15 +19,30 @@ radius = 4.5
 custom_solver_bias = 0.0
 length = 22.3116
 
+[sub_resource type="RayShape2D" id=13]
+
+custom_solver_bias = 0.0
+length = 11.6118
+
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
-extents = Vector2( 41.7054, 43.9775 )
+extents = Vector2( 39.1987, 57.5408 )
 
 [sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
-extents = Vector2( 5.78424, 37.695 )
+extents = Vector2( 8.5154, 43.6302 )
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 44.5277, 22.1275 )
+
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.63996, 57.0433 )
 
 [node name="Root" type="Node"]
 
@@ -38,7 +54,6 @@ script/script = ExtResource( 1 )
 
 [node name="Player" type="KinematicBody2D" parent="Game"]
 
-editor/display_folded = true
 transform/pos = Vector2( 256, 80 )
 input/pickable = false
 shapes/0/shape = SubResource( 7 )
@@ -71,37 +86,83 @@ shape = SubResource( 8 )
 trigger = true
 _update_shape_index = 1
 
+[node name="ShorterRay" type="CollisionShape2D" parent="Game/Player/Ray"]
+
+transform/pos = Vector2( -0.174835, -3.84615 )
+shape = SubResource( 13 )
+trigger = true
+_update_shape_index = 2
+
 [node name="Node" type="Node" parent="Game"]
 
-[node name="Carpet" type="Area2D" parent="Game/Node"]
+[node name="Carpet Wilds" type="Area2D" parent="Game/Node"]
 
-transform/pos = Vector2( 125.907, 80.5686 )
-transform/scale = Vector2( 1.78334, 1.02994 )
 input/pickable = true
 shapes/0/shape = SubResource( 9 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 11.9737, 15.3922 )
+shapes/0/transform = Matrix32( 1.78334, 0, 0, 1.02994, 151.161, 94.1261 )
 shapes/0/trigger = false
 shapes/1/shape = SubResource( 10 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, -36.6468, 21.0465 )
+shapes/1/transform = Matrix32( 1.78334, 0, 0, 1.02994, 63.9668, 108.847 )
 shapes/1/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+script/script = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Node/Carpet"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Node/Carpet Wilds"]
 
-transform/pos = Vector2( 11.9737, 15.3922 )
+transform/pos = Vector2( 151.161, 94.1261 )
+transform/scale = Vector2( 1.78334, 1.02994 )
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 
-[node name="CollisionShape2D 2" type="CollisionShape2D" parent="Game/Node/Carpet"]
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="Game/Node/Carpet Wilds"]
 
-transform/pos = Vector2( -36.6468, 21.0465 )
+transform/pos = Vector2( 63.9668, 108.847 )
+transform/scale = Vector2( 1.78334, 1.02994 )
 shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 1
+
+[node name="Hallway of Doom" type="Area2D" parent="Game/Node"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 11 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 257.742, 194.309 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Node/Hallway of Doom"]
+
+transform/pos = Vector2( 257.742, 194.309 )
+shape = SubResource( 11 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Western Wastes" type="Area2D" parent="Game/Node"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 12 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 25.5371, 93.491 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Node/Western Wastes"]
+
+transform/pos = Vector2( 25.5371, 93.491 )
+shape = SubResource( 12 )
+trigger = false
+_update_shape_index = 0
 
 [node name="FadeableGUI" type="CanvasLayer" parent="."]
 
@@ -172,16 +233,15 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 278.0
-margin/top = 221.0
-margin/right = 318.0
-margin/bottom = 235.0
-align = 2
+margin/left = 3.0
+margin/top = 181.0
+margin/right = 43.0
+margin/bottom = 195.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="BattleScreen" parent="." instance=ExtResource( 5 )]
+[node name="BattleScreen" parent="." instance=ExtResource( 6 )]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -190,10 +250,22 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
-[node name="Message" parent="GUI" instance=ExtResource( 6 )]
+[node name="Message" parent="GUI" instance=ExtResource( 7 )]
 
 visibility/visible = false
 
-[node name="Fade" parent="." instance=ExtResource( 7 )]
+[node name="Fade" parent="." instance=ExtResource( 8 )]
+
+[connection signal="body_enter" from="Game/Node/Carpet Wilds" to="Game/Node/Carpet Wilds" method="_on_Biome_body_enter"]
+
+[connection signal="body_exit" from="Game/Node/Carpet Wilds" to="Game/Node/Carpet Wilds" method="_on_Biome_body_exit"]
+
+[connection signal="body_enter" from="Game/Node/Hallway of Doom" to="Game/Node/Hallway of Doom" method="_on_Biome_body_enter"]
+
+[connection signal="body_exit" from="Game/Node/Hallway of Doom" to="Game/Node/Hallway of Doom" method="_on_Biome_body_exit"]
+
+[connection signal="body_enter" from="Game/Node/Western Wastes" to="Game/Node/Western Wastes" method="_on_Biome_body_enter"]
+
+[connection signal="body_exit" from="Game/Node/Western Wastes" to="Game/Node/Western Wastes" method="_on_Biome_body_exit"]
 
 

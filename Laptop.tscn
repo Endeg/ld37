@@ -3,7 +3,7 @@
 [ext_resource path="res://Laptop.gd" type="Script" id=1]
 [ext_resource path="res://LaptopFrames.tres" type="SpriteFrames" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 6.8835, 2.99613 )
@@ -11,7 +11,7 @@ extents = Vector2( 6.8835, 2.99613 )
 [node name="Laptop" type="Area2D"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2.0783 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -28,13 +28,9 @@ animation = "TurnedOff"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 transform/pos = Vector2( 0, 2.0783 )
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
-
-[connection signal="area_enter" from="." to="." method="_on_Laptop_area_enter"]
-
-[connection signal="area_exit" from="." to="." method="_on_Laptop_area_exit"]
 
 [connection signal="body_enter" from="." to="." method="_on_Laptop_body_enter"]
 

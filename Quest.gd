@@ -26,4 +26,7 @@ func setBiome(name):
 	currentBiome = name
 	var biomeLabel = get_node("/root/Root/FadeableGUI/Biome")
 	assert biomeLabel != null
-	biomeLabel.set_text(currentBiome)
+	if name != null:
+		biomeLabel.set_text(currentBiome)
+	else:
+		biomeLabel.set_text("")
