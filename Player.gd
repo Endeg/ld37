@@ -30,6 +30,11 @@ func _ready():
 	messagePopup.showMessages(["Well.", "It's time to turn on computer and check the Internet!"])
 
 func _fixed_process(delta):
+	if not quest.gameOver and quest.motivation <= 0:
+		quest.gameOver = true
+		messagePopup.showMessages(["You lose all your motivation.", "Now all you want is just get some sleep.", "Don't wory you'll finish your projects eventually!"])
+		get_node("/root/Root/Fade").fadeToBlack("MainMenu.tscn")
+		
 	var vel_x = Vector2()
 	var vel_y = Vector2()
 	

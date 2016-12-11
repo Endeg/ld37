@@ -11,6 +11,6 @@ func _ready():
 func _input(event):
 	if event.type == InputEvent.KEY and not keyPressed:
 		keyPressed = true
-		get_nodo("root/Quest").newGame()
+		get_node("/root/Quest").newGame()
 		get_node("StartBlinky/AnimationPlayer").set_speed(5.0)
 		get_node("Fade").fadeToBlack("Root.tscn")
